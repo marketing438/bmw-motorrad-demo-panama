@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMW Motorrad Panamá | Make Life a Ride</title>
+<meta name="description" content="BMW Motorrad Panamá. Descubre toda la gama de motos BMW para cada aventura.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#000;--off-black:#0E0E0E;--card:#161616;--border:#272727;
+  --white:#fff;--gray-l:#E4E4E4;--gray-m:#ABABAB;--gray-d:#636363;
+  --blue:#1C69D4;--blue-h:#2879E4;--nav-h:68px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+.ubar{background:#070707;border-bottom:1px solid var(--border);padding:5px 40px;display:flex;justify-content:flex-end;align-items:center;gap:28px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-d)}
+.ubar a{color:var(--gray-d);transition:color .18s}.ubar a:hover{color:var(--white)}
+
+.nav{position:sticky;top:0;z-index:500;height:var(--nav-h);background:rgba(0,0,0,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 40px}
+.nav-logo{display:flex;align-items:center;gap:13px;flex-shrink:0;margin-right:36px}
+.roundel{width:44px;height:44px}
+.nbrand{display:flex;flex-direction:column;line-height:1}
+.nbrand .b1{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.28em;color:var(--white)}
+.nbrand .b2{font-family:'Barlow Condensed',sans-serif;font-size:10.5px;letter-spacing:.32em;color:var(--gray-m);text-transform:uppercase}
+.nav-links{display:flex;align-items:center;list-style:none;flex:1}
+.nav-links>li{position:relative}
+.nav-links>li>a{display:block;padding:8px 14px;font-family:'Barlow Condensed',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-l);transition:color .18s;white-space:nowrap}
+.nav-links>li>a:hover,.nav-links>li>a.on{color:var(--white)}
+.nav-links>li>a.on{border-bottom:2px solid var(--blue);padding-bottom:6px}
+.nav-links>li:hover .drop{display:block}
+.drop{display:none;position:absolute;top:100%;left:0;background:#111;border:1px solid var(--border);min-width:215px;padding:10px 0;box-shadow:0 20px 60px rgba(0,0,0,.85)}
+.drop a{display:block;padding:7px 20px;font-size:12.5px;color:var(--gray-m);letter-spacing:.04em;transition:all .15s}
+.drop a:hover{color:var(--white);background:rgba(28,105,212,.09)}
+.drop-lbl{padding:10px 20px 3px;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-d)}
+.nav-ctas{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;padding:8px 18px;font-family:'Barlow Condensed',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:none;transition:all .18s}
+.btn-b{background:var(--blue);color:var(--white)}.btn-b:hover{background:var(--blue-h)}
+.btn-g{background:transparent;color:var(--gray-l);border:1px solid var(--border)}.btn-g:hover{border-color:var(--gray-m);color:var(--white)}
+
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .85s ease;display:flex;align-items:flex-end}
+.slide.on{opacity:1}
+.slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.05);transition:transform 9s ease}
+.slide.on .slide-bg{transform:scale(1)}
+.slide-veil{position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.42) 55%,rgba(0,0,0,.08) 100%)}
+.slide-body{position:relative;z-index:2;padding:0 72px 88px;max-width:660px}
+.slide-eye{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.36em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.slide-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.8rem,6.5vw,5.8rem);font-weight:800;line-height:.93;text-transform:uppercase;margin-bottom:14px}
+.slide-price{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gray-m);margin-bottom:10px;letter-spacing:.05em}
+.slide-sub{font-size:14.5px;color:var(--gray-m);line-height:1.62;margin-bottom:30px;max-width:440px}
+.slide-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-hp{padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:var(--blue);color:var(--white);transition:background .18s;border:none;cursor:pointer}
+.btn-hp:hover{background:var(--blue-h)}
+.btn-hg{padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.35);transition:border-color .18s;cursor:pointer}
+.btn-hg:hover{border-color:rgba(255,255,255,.8)}
+.hero-dots{position:absolute;bottom:30px;right:72px;z-index:10;display:flex;gap:8px}
+.hdot{width:24px;height:2px;background:rgba(255,255,255,.25);cursor:pointer;transition:width .3s,background .3s}
+.hdot.on{width:44px;background:var(--blue)}
+.hero-tag{position:absolute;bottom:32px;left:72px;z-index:10;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+
+.fbar{position:sticky;top:var(--nav-h);z-index:200;background:var(--off-black);border-bottom:1px solid var(--border);padding:0 40px;display:flex;overflow-x:auto}
+.fbar::-webkit-scrollbar{display:none}
+.fbtn{padding:14px 18px;background:none;border:none;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-d);white-space:nowrap;cursor:pointer;border-bottom:3px solid transparent;transition:color .18s,border-color .18s}
+.fbtn:hover{color:var(--white)}.fbtn.on{color:var(--white);border-bottom-color:var(--blue)}
+
+.models{padding:2px 0;background:var(--black)}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.mc{position:relative;height:460px;overflow:hidden;cursor:pointer;background:var(--card)}
+.mc.wide{grid-column:span 2}
+.mc-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s ease}
+.mc:hover .mc-bg{transform:scale(1.04)}
+.mc-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.93) 0%,rgba(0,0,0,.22) 55%,transparent 100%);transition:background .35s}
+.mc:hover .mc-veil{background:linear-gradient(to top,rgba(0,0,0,.97) 0%,rgba(0,0,0,.5) 65%,rgba(0,0,0,.1) 100%)}
+.mc-body{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;transform:translateY(6px);transition:transform .28s ease}
+.mc:hover .mc-body{transform:translateY(0)}
+.mc-cat{font-family:'Barlow Condensed',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:5px}
+.mc-name{font-family:'Barlow Condensed',sans-serif;font-size:2.1rem;font-weight:800;line-height:1;text-transform:uppercase;margin-bottom:6px}
+.mc-price{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:600;color:var(--gray-m);margin-bottom:10px;letter-spacing:.05em}
+.mc-desc{font-size:12.5px;color:var(--gray-m);line-height:1.55;margin-bottom:18px;max-height:0;overflow:hidden;opacity:0;transition:max-height .3s,opacity .3s}
+.mc:hover .mc-desc{max-height:72px;opacity:1}
+.mc-btns{display:flex;gap:8px;opacity:0;transform:translateY(6px);transition:opacity .28s,transform .28s}
+.mc:hover .mc-btns{opacity:1;transform:translateY(0)}
+.mbn{padding:7px 14px;font-family:'Barlow Condensed',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .18s;border:none}
+.mbn-p{background:var(--blue);color:var(--white)}.mbn-p:hover{background:var(--blue-h)}
+.mbn-g{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.35)}.mbn-g:hover{border-color:var(--white)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:#070707;border-top:1px solid var(--border)}
+.stat{padding:44px 40px;border-right:1px solid var(--border)}.stat:last-child{border-right:none}
+.stat-n{font-family:'Barlow Condensed',sans-serif;font-size:3.6rem;font-weight:800;color:var(--blue);line-height:1;margin-bottom:6px}
+.stat-l{font-size:12px;color:var(--gray-d);letter-spacing:.1em;text-transform:uppercase;line-height:1.4}
+
+.ctaband{background:var(--blue);padding:60px 72px;display:flex;justify-content:space-between;align-items:center;gap:32px}
+.ctaband h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:800;text-transform:uppercase;line-height:.95;margin-bottom:6px}
+.ctaband p{font-size:14px;opacity:.82}
+.ctaband-btns{display:flex;gap:10px;flex-shrink:0}
+.bw{padding:13px 30px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--white);color:var(--blue);display:inline-block;transition:all .18s;border:none;cursor:pointer}
+.bw:hover{background:#000;color:var(--white)}
+.bt{padding:13px 30px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.4);cursor:pointer;transition:border-color .18s}
+.bt:hover{border-color:var(--white)}
+
+.social{background:#090909;border-top:1px solid var(--border);padding:52px 72px;text-align:center}
+.social-eye{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.36em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.social h2{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.social p{font-size:13.5px;color:var(--gray-d)}
+.soc-links{display:flex;justify-content:center;gap:12px;margin-top:22px}
+.soc-link{padding:9px 22px;border:1px solid var(--border);color:var(--gray-m);font-family:'Barlow Condensed',sans-serif;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:all .18s}
+.soc-link:hover{border-color:var(--white);color:var(--white)}
+
+footer{background:#0C0C0C;border-top:1px solid var(--border);padding:52px 72px 30px}
+.ft-top{display:grid;grid-template-columns:220px 1fr 1fr 1fr;gap:48px;margin-bottom:44px}
+.ft-brand p{font-size:12.5px;color:var(--gray-d);line-height:1.65;margin-top:14px}
+.ft-col h4{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-d);margin-bottom:14px}
+.ft-col ul{list-style:none}.ft-col ul li{margin-bottom:7px}
+.ft-col ul li a{font-size:12.5px;color:var(--gray-m);transition:color .15s}.ft-col ul li a:hover{color:var(--white)}
+.ft-bot{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.ft-bot p{font-size:11px;color:var(--gray-d)}
+.ft-leg{display:flex;gap:18px}
+.ft-leg a{font-size:10.5px;color:var(--gray-d);transition:color .15s}.ft-leg a:hover{color:var(--white)}
+
+.ai-fab{position:fixed;bottom:28px;right:28px;z-index:2000;display:flex;align-items:center;gap:11px;background:var(--blue);color:var(--white);padding:12px 22px 12px 16px;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 8px 32px rgba(28,105,212,.45);transition:all .22s}
+.ai-fab:hover{background:var(--blue-h);box-shadow:0 12px 40px rgba(28,105,212,.6);transform:translateY(-2px)}
+.fab-icon{width:30px;height:30px;background:rgba(255,255,255,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fab-pulse{position:absolute;top:-5px;right:-5px;width:13px;height:13px;background:#4ADEA8;border-radius:50%;animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,168,.7)}70%{box-shadow:0 0 0 10px rgba(74,222,168,0)}100%{box-shadow:0 0 0 0 rgba(74,222,168,0)}}
+
+.ai-panel{position:fixed;right:0;top:0;bottom:0;width:420px;background:#0C0C0C;border-left:1px solid var(--border);z-index:3000;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .38s cubic-bezier(.25,.8,.25,1);box-shadow:-20px 0 80px rgba(0,0,0,.9)}
+.ai-panel.open{transform:translateX(0)}
+.ai-head{background:#080808;border-bottom:1px solid var(--border);padding:18px 22px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.ai-ava{width:38px;height:38px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:800;flex-shrink:0}
+.ai-hi{flex:1}
+.ai-hn{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.ai-hs{font-size:10.5px;color:#4ADEA8;margin-top:2px;display:flex;align-items:center;gap:5px}
+.sdot{width:5px;height:5px;background:#4ADEA8;border-radius:50%}
+.ai-x{background:none;border:none;color:var(--gray-d);cursor:pointer;padding:4px;display:flex;align-items:center;transition:color .15s}.ai-x:hover{color:var(--white)}
+.ai-pow{padding:7px 20px;background:rgba(28,105,212,.07);border-bottom:1px solid var(--border);font-size:10px;color:var(--gray-d);display:flex;align-items:center;gap:5px;flex-shrink:0}
+.ai-pow span{color:var(--blue);font-weight:600}
+.ai-msgs{flex:1;overflow-y:auto;padding:18px 18px 8px;display:flex;flex-direction:column;gap:12px}
+.ai-msgs::-webkit-scrollbar{width:3px}.ai-msgs::-webkit-scrollbar-thumb{background:var(--border)}
+.amsg{max-width:88%;animation:fup .26s ease}
+@keyframes fup{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.amsg-b{align-self:flex-start}.amsg-u{align-self:flex-end}
+.abub{padding:10px 13px;font-size:13px;line-height:1.5}
+.amsg-b .abub{background:#1c1c1c;color:var(--gray-l);border-left:2px solid var(--blue)}
+.amsg-u .abub{background:var(--blue);color:var(--white)}
+.at{font-size:9px;color:var(--gray-d);margin-top:3px;padding:0 3px}
+.amsg-b .at{text-align:left}.amsg-u .at{text-align:right}
+.asugg{padding:0 18px 8px;display:flex;flex-direction:column;gap:4px}
+.asbtn{background:#181818;border:1px solid var(--border);color:var(--gray-m);padding:7px 11px;text-align:left;font-size:11.5px;cursor:pointer;transition:all .14s;font-family:'Barlow',sans-serif}
+.asbtn:hover{border-color:var(--blue);color:var(--white);background:rgba(28,105,212,.1)}
+.ai-inp-area{padding:12px 18px;border-top:1px solid var(--border);display:flex;gap:6px;background:#080808;flex-shrink:0}
+.ai-inp{flex:1;background:#1a1a1a;border:1px solid var(--border);color:var(--white);padding:8px 12px;font-size:13px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .15s}
+.ai-inp:focus{border-color:var(--blue)}
+.ai-inp::placeholder{color:var(--gray-d)}
+.ai-snd{background:var(--blue);border:none;color:var(--white);padding:8px 14px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .15s}
+.ai-snd:hover{background:var(--blue-h)}.ai-snd:disabled{background:#0f3a78;cursor:not-allowed}
+.typing{display:flex;gap:4px;padding:10px 13px;background:#1c1c1c;border-left:2px solid var(--blue);align-self:flex-start;animation:fup .26s ease}
+.td{width:5px;height:5px;background:var(--gray-d);border-radius:50%;animation:tk 1.4s infinite}
+.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+@keyframes tk{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-5px);opacity:1}}
+.veil{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2500;opacity:0;pointer-events:none;transition:opacity .38s}
+.veil.on{opacity:1;pointer-events:all}
+
+@media(max-width:1100px){.mgrid{grid-template-columns:repeat(2,1fr)}.mc.wide{grid-column:span 1}.stats{grid-template-columns:repeat(2,1fr)}.ft-top{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){:root{--nav-h:58px}.ubar{display:none}.nav{padding:0 20px}.nav-links{display:none}.slide-body{padding:0 28px 64px}.mgrid{grid-template-columns:1fr}.ctaband{flex-direction:column;padding:44px 28px;text-align:center}.stats{grid-template-columns:repeat(2,1fr)}.ft-top{grid-template-columns:1fr;gap:28px}footer{padding:40px 28px 24px}.ai-panel{width:100%}}
+</style>
+</head>
+<body>
+
+<div class="ubar">
+  <a href="#">Financiación</a><a href="#">Seguro</a><a href="#">Test Ride</a><a href="#">Contacto</a>
+</div>
+
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <svg class="roundel" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#000"/><circle cx="50" cy="50" r="46" fill="#fff"/><path d="M50,4 A46,46 0 0,1 96,50 L50,50 Z" fill="#1C69D4"/><path d="M50,96 A46,46 0 0,1 4,50 L50,50 Z" fill="#1C69D4"/><path d="M50,4 A46,46 0 0,0 4,50 L50,50 Z" fill="#fff"/><path d="M50,96 A46,46 0 0,0 96,50 L50,50 Z" fill="#fff"/><circle cx="50" cy="50" r="34" fill="#fff"/><circle cx="50" cy="50" r="34" fill="none" stroke="#000" stroke-width="1.5"/><circle cx="50" cy="50" r="46" fill="none" stroke="#000" stroke-width="1.5"/><line x1="50" y1="16" x2="50" y2="84" stroke="#fff" stroke-width="1.5"/><line x1="16" y1="50" x2="84" y2="50" stroke="#fff" stroke-width="1.5"/><text x="50" y="15" text-anchor="middle" fill="#000" font-family="Helvetica Neue,Arial" font-size="8.5" font-weight="900" letter-spacing="1.8">BMW</text></svg>
+    <div class="nbrand"><span class="b1">BMW</span><span class="b2">Motorrad</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" class="on">Inicio</a></li>
+    <li><a href="#">Modelos</a>
+      <div class="drop">
+        <a href="#">Todos los modelos</a>
+        <div class="drop-lbl">Adventure</div><a href="#">R 1300 GS Adventure</a><a href="#">R 1300 GS</a><a href="#">F 900 GS</a><a href="#">F 450 GS</a>
+        <div class="drop-lbl">Sport</div><a href="#">S 1000 RR</a><a href="#">S 1000 XR</a>
+        <div class="drop-lbl">M Performance</div><a href="#">M 1000 RR</a><a href="#">M 1000 R</a>
+        <div class="drop-lbl">Heritage</div><a href="#">R 12 nineT</a><a href="#">R 12</a><a href="#">R 12 G/S</a>
+      </div>
+    </li>
+    <li><a href="#">Personalización</a><div class="drop"><a href="#">M Performance</a><a href="#">Opción 719</a><a href="#">Accesorios</a></div></li>
+    <li><a href="#">Equipamiento</a></li>
+    <li><a href="#">Descubre</a><div class="drop"><a href="#">Historias</a><a href="#">Eventos</a><a href="#">GS Trophy</a><a href="#">100 años BMW</a></div></li>
+    <li><a href="#">Servicio</a><div class="drop"><a href="#">Financiación</a><a href="#">Seguro</a><a href="#">Garantía</a><a href="#">Taller</a></div></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="https://www.bmw-motorrad.pa/es/service/form/rfo.html" class="btn btn-g" target="_blank">Cotiza Aquí</a>
+    <a href="https://configurator.bmw-motorrad.com/index_es_BM.html#/configurator" class="btn btn-b" target="_blank">Crea la tuya</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div id="slides">
+    <div class="slide on">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191838_3ff6c32a-35be-4b79-8128-e3454c1fbd77_min.webp')"></div>
+      <div class="slide-veil"></div>
+      <div class="slide-body">
+        <p class="slide-eye">Adventure · 2026</p>
+        <h1 class="slide-h">R 1300 GS<br>Adventure</h1>
+        <p class="slide-sub">La GS más poderosa de la historia. 145 Nm. Suspensión electrónica semi-activa. Lista para llevarte más lejos que nunca.</p>
+        <div class="slide-btns"><button class="btn-hp">Ver modelo</button><button class="btn-hg">Cotizar ahora</button></div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191844_b49b6584-b746-473f-b921-47ecd9350fb3_min.webp')"></div>
+      <div class="slide-veil"></div>
+      <div class="slide-body">
+        <p class="slide-eye">M Performance · 2025</p>
+        <h1 class="slide-h">M 1000 RR</h1>
+        <p class="slide-sub">218 CV. 314 km/h. Homologada para competición. La superbike más extrema jamás construida por BMW. #NeverStopChallenging</p>
+        <div class="slide-btns"><button class="btn-hp">Ver modelo</button><button class="btn-hg">Configurar</button></div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191850_054fa62c-d159-421a-b1fc-1c6238dd7c89_min.webp')"></div>
+      <div class="slide-veil"></div>
+      <div class="slide-body">
+        <p class="slide-eye">Heritage · 2026</p>
+        <h1 class="slide-h">R 12<br>nineT</h1>
+        <p class="slide-sub">El ícono que trasciende el tiempo. Motor bóxer, diseño purista y el Soulfuel más auténtico de la familia R.</p>
+        <div class="slide-btns"><button class="btn-hp">Ver modelo</button><button class="btn-hg">Cotizar ahora</button></div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191856_6808b674-0e0d-4b2f-83fa-5b9139a265e1_min.webp')"></div>
+      <div class="slide-veil"></div>
+      <div class="slide-body">
+        <p class="slide-eye">Sport · 2026</p>
+        <h1 class="slide-h">S 1000 XR</h1>
+        <p class="slide-sub">170 CV. Rendimiento extremo + comodidad de largo recorrido. Agresiva. Sin compromisos. XR.</p>
+        <div class="slide-btns"><button class="btn-hp">Ver modelo</button><button class="btn-hg">Cotizar ahora</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots" id="hdots">
+    <div class="hdot on" data-s="0"></div><div class="hdot" data-s="1"></div>
+    <div class="hdot" data-s="2"></div><div class="hdot" data-s="3"></div>
+  </div>
+  <div class="hero-tag">Make Life a Ride</div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="fbar">
+  <button class="fbtn on" data-f="all">Todo</button>
+  <button class="fbtn" data-f="adventure">Adventure</button>
+  <button class="fbtn" data-f="sport">Sport</button>
+  <button class="fbtn" data-f="m">M Performance</button>
+  <button class="fbtn" data-f="tour">Tour</button>
+  <button class="fbtn" data-f="roadster">Roadster</button>
+  <button class="fbtn" data-f="heritage">Heritage</button>
+  <button class="fbtn" data-f="urban">Urban</button>
+</div>
+
+<!-- MODELS GRID -->
+<section class="models">
+  <div class="mgrid" id="mgrid">
+
+    <div class="mc wide" data-c="adventure">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191838_3ff6c32a-35be-4b79-8128-e3454c1fbd77_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Adventure · 2026</div><div class="mc-name">R 1300 GS Adventure</div><div class="mc-price">Desde $0M31</div><p class="mc-desc">La reina de las GS. 145 Nm, suspensión electrónica semi-activa. On y off-road extremo.</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc" data-c="m">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191912_9882daf3-432c-4f59-bc0a-54cecc71ab38_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">M · 2025</div><div class="mc-name">M 1000 RR</div><div class="mc-price">Desde $54,900</div><p class="mc-desc">218 CV. Homologada para competición. 314 km/h. #NeverStopChallenging</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc" data-c="sport">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191918_582a8c79-57b1-410f-a1b6-f87e3f3d4dee_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Sport · 2026</div><div class="mc-name">S 1000 RR</div><div class="mc-price">Desde $33,900</div><p class="mc-desc">210 CV. La superbike definitiva de pista y calle. Tecnología directa del WorldSBK.</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc" data-c="adventure">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191923_6ac37293-f9a5-4c4c-8358-72de866d1574_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Adventure · 2026</div><div class="mc-name">F 900 GS</div><div class="mc-price">Desde $22,900</div><p class="mc-desc">105 CV. Para los que no conocen límites. La enduro perfecta on y off-road.</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc" data-c="m">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191927_a4f8719a-57bb-45be-881c-77b29647c3ec_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">M · 2025</div><div class="mc-name">M 1000 R</div><div class="mc-price">Desde $40,900</div><p class="mc-desc">210 CV. Dynamic Roadster extrema. Brutal en carretera y pista. #NeverStopChallenging</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc wide" data-c="heritage">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191850_054fa62c-d159-421a-b1fc-1c6238dd7c89_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Heritage · 2026</div><div class="mc-name">R 12 nineT</div><div class="mc-price">Desde $26,900</div><p class="mc-desc">Un ícono que trasciende el tiempo. Motor bóxer purista y el Soulfuel más auténtico.</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc" data-c="tour">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191936_3cb226b3-3715-42df-8abc-b409b8897c20_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Tour · 2025</div><div class="mc-name">R 1300 RT</div><div class="mc-price">Desde $38,900</div><p class="mc-desc">145 CV. La touring definitiva para cada kilómetro de placer en larga distancia.</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc" data-c="sport">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191856_6808b674-0e0d-4b2f-83fa-5b9139a265e1_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Sport · 2026</div><div class="mc-name">S 1000 XR</div><div class="mc-price">Desde $34,900</div><p class="mc-desc">170 CV. Deporte + confort de largo recorrido. Sin compromisos. XR.</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc" data-c="roadster">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191942_aed03350-b445-41c5-93d7-f94ee1c50380_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Roadster · 2026</div><div class="mc-name">F 900 R</div><div class="mc-price">Desde $16,900</div><p class="mc-desc">105 CV. Ágil, dinámica y lista para el desafío. La roadster perfecta para cada día.</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc wide" data-c="urban">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191947_9c39772b-0833-4100-b05c-5f4a39cf4799_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Urban Mobility · 2026</div><div class="mc-name">C 400 X<br>& C 400 GT</div><div class="mc-price">Desde $12,800</div><p class="mc-desc">Movilidad premium en la ciudad. Conectada, ágil e inteligente. #PluggedToLife</p><div class="mc-btns"><button class="mbn mbn-p">Ver modelos</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc" data-c="heritage">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191952_121203cd-1dd7-4600-a0c0-2d78a77b150f_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Heritage · 2025</div><div class="mc-name">R 12 G/S</div><div class="mc-price">Desde $26,900</div><p class="mc-desc">El espíritu de la R 80 G/S original. Lista para sacar tu lado más salvaje. #Soulfuel</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+    <div class="mc" data-c="adventure">
+      <div class="mc-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3De4bEHMszloNZI3Rs1dvN8K2J8/hf_20260709_191956_8a3dcce4-ae0a-4a37-a2c3-7866eeb246a0_min.webp')"></div>
+      <div class="mc-veil"></div>
+      <div class="mc-body"><div class="mc-cat">Adventure · 2026</div><div class="mc-name">F 450 GS</div><div class="mc-price">Desde $11,900</div><p class="mc-desc">48 CV, 178 kg. La más ligera y espontánea. Cada día se convierte en aventura.</p><div class="mc-btns"><button class="mbn mbn-p">Ver más</button><button class="mbn mbn-g">Configurar</button></div></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n">100</div><div class="stat-l">Años de historia<br>BMW Motorrad</div></div>
+  <div class="stat"><div class="stat-n">20+</div><div class="stat-l">Modelos disponibles<br>en Panamá</div></div>
+  <div class="stat"><div class="stat-n">5</div><div class="stat-l">Años de garantía<br>en cascos BMW</div></div>
+  <div class="stat"><div class="stat-n">#1</div><div class="stat-l">Campeonato WorldSBK<br>2025 — Toprak</div></div>
+</div>
+
+<section class="ctaband">
+  <div><h2>¿Listo para tu<br>próxima aventura?</h2><p>Encuentra tu BMW Motorrad ideal y cotiza sin compromiso.</p></div>
+  <div class="ctaband-btns"><button class="bw">Cotizar ahora</button><button class="bt">Agenda un Test Ride</button></div>
+</section>
+
+<section class="social">
+  <p class="social-eye">Síguenos</p>
+  <h2>@MotorradPanama</h2>
+  <p>Sé parte de la comunidad BMW Motorrad en Panamá</p>
+  <div class="soc-links">
+    <a href="https://www.instagram.com/motorradpanama/" target="_blank" class="soc-link">Instagram</a>
+    <a href="https://www.youtube.com/@bmwmotorradpanama" target="_blank" class="soc-link">YouTube</a>
+    <a href="http://www.bmw-motorrad-motorsport.com" target="_blank" class="soc-link">Motorsport</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <svg width="44" height="44" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#000"/><circle cx="50" cy="50" r="46" fill="#fff"/><path d="M50,4 A46,46 0 0,1 96,50 L50,50 Z" fill="#1C69D4"/><path d="M50,96 A46,46 0 0,1 4,50 L50,50 Z" fill="#1C69D4"/><path d="M50,4 A46,46 0 0,0 4,50 L50,50 Z" fill="#fff"/><path d="M50,96 A46,46 0 0,0 96,50 L50,50 Z" fill="#fff"/><circle cx="50" cy="50" r="34" fill="#fff"/><circle cx="50" cy="50" r="34" fill="none" stroke="#000" stroke-width="1.5"/><circle cx="50" cy="50" r="46" fill="none" stroke="#000" stroke-width="1.5"/><line x1="50" y1="16" x2="50" y2="84" stroke="#fff" stroke-width="1.5"/><line x1="16" y1="50" x2="84" y2="50" stroke="#fff" stroke-width="1.5"/><text x="50" y="15" text-anchor="middle" fill="#000" font-family="Helvetica Neue,Arial" font-size="8.5" font-weight="900" letter-spacing="1.8">BMW</text></svg>
+      <p>BMW Motorrad Panamá.<br>Make Life a Ride.<br>© BMW AG 2026</p>
+    </div>
+    <div class="ft-col"><h4>Modelos</h4><ul><li><a href="#">Adventure</a></li><li><a href="#">Sport</a></li><li><a href="#">M Performance</a></li><li><a href="#">Tour</a></li><li><a href="#">Roadster</a></li><li><a href="#">Heritage</a></li><li><a href="#">Urban Mobility</a></li></ul></div>
+    <div class="ft-col"><h4>Descubre</h4><ul><li><a href="#">Historias</a></li><li><a href="#">Eventos</a></li><li><a href="#">GS Trophy 2024</a></li><li><a href="#">100 años BMW Motorrad</a></li><li><a href="#">Motorsport</a></li></ul></div>
+    <div class="ft-col"><h4>Servicio</h4><ul><li><a href="#">Financiación</a></li><li><a href="#">Seguro</a></li><li><a href="#">Garantía de cascos</a></li><li><a href="#">Manuales</a></li><li><a href="#">Contacto</a></li></ul></div>
+  </div>
+  <div class="ft-bot">
+    <p>© BMW AG 2026 · BMW Motorrad Panamá · Precios recomendados, sujetos a cambio sin previo aviso.</p>
+    <div class="ft-leg"><a href="#">Privacidad</a><a href="#">Cookies</a><a href="#">Nota Legal</a></div>
+  </div>
+</footer>
+
+<div class="veil" id="veil" onclick="closeAI()"></div>
+
+<button class="ai-fab" id="aiFab" onclick="openAI()" style="position:relative">
+  <div class="fab-icon">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  Asistente BMW
+  <div class="fab-pulse"></div>
+</button>
+
+<div class="ai-panel" id="aiPanel">
+  <div class="ai-head">
+    <div class="ai-ava">BM</div>
+    <div class="ai-hi">
+      <div class="ai-hn">Asistente BMW Motorrad</div>
+      <div class="ai-hs"><span class="sdot"></span>En línea · Panamá</div>
+    </div>
+    <button class="ai-x" onclick="closeAI()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="ai-pow">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#1C69D4" stroke-width="2"/><path d="M12 6v6l4 2" stroke="#1C69D4" stroke-width="2" stroke-linecap="round"/></svg>
+    Powered by <span>IA · NeuroBuzz</span>
+  </div>
+  <div class="ai-msgs" id="aiMsgs">
+    <div class="amsg amsg-b">
+      <div class="abub">¡Bienvenido a BMW Motorrad Panamá! 🏍️<br><br>Soy tu asistente virtual. Puedo ayudarte con modelos, precios, financiamiento, test rides y más.<br><br>¿En qué puedo ayudarte hoy?</div>
+      <div class="at">Ahora</div>
+    </div>
+  </div>
+  <div class="asugg" id="asugg">
+    <button class="asbtn" onclick="pick(this)">¿Qué modelos tienen disponibles?</button>
+    <button class="asbtn" onclick="pick(this)">Me interesa la R 1300 GS Adventure</button>
+    <button class="asbtn" onclick="pick(this)">¿Cómo funciona el financiamiento?</button>
+    <button class="asbtn" onclick="pick(this)">Quiero agendar un Test Ride</button>
+  </div>
+  <div class="ai-inp-area">
+    <input class="ai-inp" id="aiInp" type="text" placeholder="Escribe tu pregunta..." onkeypress="kp(event)">
+    <button class="ai-snd" id="aiSnd" onclick="send()">Enviar</button>
+  </div>
+</div>
+
+<script>
+const SP=`Eres el Asistente Virtual oficial de BMW Motorrad Panamá.
+
+ROL: Ayudar a los clientes a encontrar su moto ideal y convertir el interés en un test ride o cotización.
+
+PERSONALIDAD:
+- Apasionado por las motos y la marca BMW
+- Profesional pero cercano y entusiasta
+- Siempre en español, tono panameño/latino
+- Respuestas concisas (máx. 130 palabras) a menos que pidan más detalle
+- 1-2 emojis máximo
+
+MODELOS Y PRECIOS EN PANAMÁ 2025-2026:
+
+ADVENTURE:
+- R 1300 GS Adventure: desde $0, bóxer 1.300cc, 145 Nm, suspensión electrónica semi-activa, TFT 10.25"
+- R 1300 GS: más ágil y urbana
+- F 900 GS: desde $22,900 — 105 CV, enduro perfecta
+- F 800 GS: versátil para principiantes
+- F 450 GS: desde $11,900 — 48 CV, 178 kg, ligera
+
+SPORT:
+- S 1000 RR: desde $33,900 — 210 CV, superbike definitiva
+- S 1000 XR: desde $34,900 — 170 CV, sport-touring
+
+M PERFORMANCE:
+- M 1000 RR: desde $54,900 — 218 CV, 314 km/h, competición
+- M 1000 R: desde $40,900 — 210 CV, Dynamic Roadster extrema
+
+TOUR:
+- R 1300 RT: desde $38,900 — touring perfecta, 145 CV
+
+ROADSTER:
+- F 900 R: desde $16,900 — Dynamic Roadster ágil
+- G 310 R: ideal ciudad y principiantes
+
+HERITAGE:
+- R 12 nineT: desde $26,900 — ícono bóxer purista
+- R 12: elegancia clásica
+- R 12 G/S: desde $26,900 — espíritu R 80 G/S
+
+URBAN MOBILITY:
+- C 400 X: desde $12,800 — scooter premium ciudad
+- C 400 GT: scooter GT largo recorrido
+
+SERVICIOS:
+- Financiamiento: desde 0% entrada, 24-60 meses, bancos aliados
+- Seguro BMW: coberturas especiales
+- Test Ride: gratis y sin compromiso
+- Servicio técnico: técnicos certificados BMW AG
+- Cascos: garantía de 5 años
+- Personalización Opción 719
+
+HORARIO: Lun-Vie 8am-6pm, Sáb 9am-4pm
+UBICACIÓN: Ciudad de Panamá
+
+REGLAS:
+1. SIEMPRE termina invitando a test ride o cotización
+2. Para precios no listados aquí, ofrece conectar con asesor
+3. Nunca inventes especificaciones no listadas aquí
+4. El objetivo siempre es: test ride o cotización`;
+
+let hist=[];
+const tn=()=>new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'});
+
+function openAI(){
+  document.getElementById('aiPanel').classList.add('open');
+  document.getElementById('veil').classList.add('on');
+  document.getElementById('aiFab').style.display='none';
+  setTimeout(()=>document.getElementById('aiInp').focus(),420);
+}
+function closeAI(){
+  document.getElementById('aiPanel').classList.remove('open');
+  document.getElementById('veil').classList.remove('on');
+  document.getElementById('aiFab').style.display='flex';
+}
+function addMsg(txt,who){
+  const b=document.getElementById('aiMsgs');
+  const d=document.createElement('div');d.className=`amsg amsg-${who}`;
+  d.innerHTML=`<div class="abub">${txt.replace(/\n/g,'<br>')}</div><div class="at">${tn()}</div>`;
+  b.appendChild(d);b.scrollTop=b.scrollHeight;
+}
+function showTyping(){
+  const b=document.getElementById('aiMsgs');
+  const d=document.createElement('div');d.id='ty';d.className='typing';
+  d.innerHTML='<div class="td"></div><div class="td"></div><div class="td"></div>';
+  b.appendChild(d);b.scrollTop=b.scrollHeight;
+}
+function rmTyping(){const t=document.getElementById('ty');if(t)t.remove();}
+
+
+
+
+
+async function callClaude(msg){
+  hist.push({role:'user',content:msg});
+  const r=await fetch('/api/chat',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({system:SP,messages:hist})
+  });
+  const d=await r.json();
+  const txt=d.content?.[0]?.text||'Lo siento, hubo un error. Por favor intenta de nuevo.';
+  hist.push({role:'assistant',content:txt});
+  return txt;
+}
+
+async function send(){
+  const inp=document.getElementById('aiInp');
+  const snd=document.getElementById('aiSnd');
+  const txt=inp.value.trim();if(!txt)return;
+  document.getElementById('asugg').style.display='none';
+  addMsg(txt,'u');inp.value='';snd.disabled=true;showTyping();
+  try{const resp=await callClaude(txt);rmTyping();addMsg(resp,'b');}
+  catch(e){rmTyping();addMsg('Disculpa, error de conexión. Por favor intenta de nuevo.','b');}
+  snd.disabled=false;inp.focus();
+}
+function pick(btn){document.getElementById('aiInp').value=btn.textContent;send();}
+function kp(e){if(e.key==='Enter')send();}
+
+/* HERO CAROUSEL */
+const slides=document.querySelectorAll('.slide');
+const dots=document.querySelectorAll('.hdot');
+let cur=0,atm;
+function goTo(n){slides[cur].classList.remove('on');dots[cur].classList.remove('on');cur=n;slides[cur].classList.add('on');dots[cur].classList.add('on');}
+function nx(){goTo((cur+1)%slides.length);}
+dots.forEach(d=>d.addEventListener('click',()=>{clearInterval(atm);goTo(+d.dataset.s);atm=setInterval(nx,5500);}));
+atm=setInterval(nx,5500);
+
+/* FILTER */
+document.querySelectorAll('.fbtn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const f=b.dataset.f;
+    document.querySelectorAll('.mc').forEach(c=>{c.style.display=(f==='all'||c.dataset.c===f)?'':'none';});
+  });
+});
+</script>
+</body>
+</html>
